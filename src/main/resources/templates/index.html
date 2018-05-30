@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" layout:decorator="master" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
+
+
+<head>
+    <base th:href="@{/}">
+</head>
+
+<body>
+<main class="container" role="main" layout:fragment="main">
+    <div class="row row-offcanvas row-offcanvas-right">
+        <!--le col in totale sono 12 md== medium screen-->
+        <div class = "col-12 col-md-9">
+            <header class="jumbotron">
+                <div class="text-center">
+                    <h1>Blog Mellace</h1>
+                    <p>Search some posts!</p>
+                    <div>
+                        <label for="search" class="sr-only">Search</label>
+                        <input type="text" tabindex="6" class="form-control" name="search" id="search" placeholder="search">
+                    </div>
+                </div>
+            </header>
+            <div id="main_container">
+                <div class = "row" id="articles_container">
+                    <article class = "col-6 col-lg-4 text-center" th:each="post: ${blogList}">
+                            <h2 tabindex="7" th:text="${post.title}">Post</h2>
+                            <p>Text:</p>
+                            <p th:text="${post.text}">Text</p>
+                            <p>Author:</p>
+                            <p th:text="${post.user}">User</p>
+                            <p>Category:</p>
+                            <p th:text="${post.category}">Category</p>
+                        <p>
+                            <a role="button"  tabindex="8" class="btn btn-secondary" th:href="@{'/blog/' + ${post.id} }">Details page</a>
+                        </p>
+                        <br>
+                    </article>
+                </div>
+
+                <div class = "row" id="ajax_container"></div>
+            </div>
+        </div>
+    </div>
+</main>
+<th:block layout:fragment="script">
+    <script th:src="@{/js/searchPost.js}"></script>
+</th:block>
+</body>
+</html>

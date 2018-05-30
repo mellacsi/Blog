@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="This is the home of a static blog">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="user" content="Simone Mellace">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:href="@{/webjars/bootstrap/4.0.0-beta.2/css/bootstrap.min.css}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}">
+    <title>Blogpost - Create a user and enjoy posting</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
+        <div id="navbarsExampleDefault" class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a role="button" tabindex="1" class="nav-link" th:href="@{/}">Home</a>
+                </li>
+                <li class="nav-item active" sec:authorize="isAuthenticated()">
+                    <a role="button" tabindex="2" class="nav-link" th:href="@{/blog/new}">New Post</a>
+                </li>
+                <li class="nav-item active" sec:authorize="isAuthenticated()">
+                    <a role="button" tabindex="3" class="nav-link" th:href="@{/research_user}">Search Users</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav justify-content-end">
+                <li class="nav-item active" sec:authorize="isAuthenticated()">
+                    <div class="nav-link" th:text="${#authentication.getName()}">Username</div>
+                </li>
+                <li class="nav-item active" sec:authorize="isAuthenticated()">
+                    <a role="button" tabindex="4" class="nav-link" th:href="@{/logout}">Logout</a>
+                </li>
+                <li class="nav-item active" sec:authorize="!isAuthenticated()">
+                    <a role="button" tabindex="5" class="nav-link" th:href="@{/login}">Login</a>
+                </li>
+                <li class="nav-item active" sec:authorize="!isAuthenticated()">
+                    <a role="button" tabindex="6" class="nav-link" th:href="@{/register}">Register</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container" layout:fragment="main">
+    </main>
+
+    <footer id="footer" class="footer-bs">
+        <div class="container">
+            <div class=" footer-brand animated fadeInLeft">
+                <p>
+                    <small>Copyleft CC <time datetime="2018-01-17T19:00">January 2018</time> by Simone Mellace.</small>
+                </p>
+                <p>
+                    <small>© Simone Mellace, All rights reserved</small>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script th:src="@{/webjars/jquery/3.2.1/jquery.js}"></script>
+    <th:block layout:fragment="script"></th:block>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" layout:decorator="master">
+
+<body>
+    <main class="container" role="main" layout:fragment="main">
+        <div class="row row-offcanvas row-offcanvas-right">
+            <div class = "col-12 col-md-9">
+                <header class="jumbotron"><h1>Registration</h1></header>
+                <form method="POST" th:action="@{/register}" id="form">
+                    <div class="form-group" id="nameDiv">
+                        <label for="myname">Name:</label>
+                        <input type="text" tabindex="6" class="form-control" id="myname" name="name" placeholder="Insert your name" required>
+                    </div>
+                    <div class="form-group" id="surnameDiv">
+                        <label for="mysurname">Surname:</label>
+                        <input type="text" tabindex="7" class="form-control" id="mysurname" name="surname" placeholder="Insert your surname" required>
+                    </div>
+                    <div class="form-group" id="usernameDiv">
+                        <label for="username">Username:</label>
+                        <input type="text" tabindex="8" class="form-control" id="username" name="username" placeholder="Insert your username" required>
+                    </div>
+                    <div class="form-group" id="passDiv">
+                        <label for="mypassword">Password:</label>
+                        <input type="password" tabindex="9" class="form-control" id="mypassword" name="password" placeholder="Insert your password" required>
+                    </div>
+                    <div class="form-group" id="confPassDiv">
+                        <label for="myconfpassword">Confirm your password:</label>
+                        <input type="password" tabindex="10" class="form-control" id="myconfpassword" name="confirmPass" placeholder="Insert your password again" required>
+                    </div>
+                    <div id="submitButton">
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <th:block layout:fragment="script">
+        <script th:src="@{/js/registrationController.js}"></script>
+    </th:block>
+</body>
+</html>

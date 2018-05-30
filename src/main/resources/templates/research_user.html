@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" layout:decorator="master" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
+
+
+<head>
+    <base th:href="@{/}">
+</head>
+
+<body>
+<main class="container" role="main" layout:fragment="main">
+    <div class="row row-offcanvas row-offcanvas-right">
+        <div class = "col-12 col-md-9">
+            <header class="jumbotron">
+                <div class="text-center">
+                    <h1>Blog Mellace</h1>
+                    <p>Search some users!</p>
+                    <div>
+                        <label for="search" class="sr-only">Search</label>
+                        <input type="text" tabindex="6" class="form-control" name="search" id="search" placeholder="search">
+                    </div>
+                </div>
+            </header>
+            <div id="main_container">
+                <div class = "row" id="users_container">
+                    <div class = "col-6 col-lg-4 text-center" th:each="user: ${users}">
+                        <h2 tabindex="7" th:text="${user.username}">Post</h2>
+                        <p>Name:</p>
+                        <p th:text="${user.name}">Name</p>
+                        <p>Surname:</p>
+                        <p th:text="${user.surname}">Surname</p>
+                        <p>Role:</p>
+                        <p th:text="${user.role.role}">Role</p>
+                        <a class="btn btn-primary" tabindex="8" role="button" sec:authorize="hasRole('ADMIN')" th:href="@{'/user/' + ${user.username} + '/delete'}">Remove user</a>
+                        <br>
+                    </div>
+                </div>
+
+                <div class = "row" id="ajax_container"></div>
+            </div>
+        </div>
+    </div>
+</main>
+<th:block layout:fragment="script">
+    <script th:src="@{/js/searchUser.js}"></script>
+</th:block>
+</body>
+</html>

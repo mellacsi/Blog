@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" layout:decorator="master">
+
+<main class="container" role="main" layout:fragment="main">
+    <div class="row row-offcanvas row-offcanvas-right">
+        <div class = "col-12 col-md-9">
+            <header class="jumbotron"><h1>Blog details</h1></header>
+            <article class="text-center">
+                <h2 th:text="${post.title}">Post</h2>
+                <p>Id:</p>
+                <p th:text="${post.id}">Id</p>
+                <p>Text:</p>
+                <p th:text="${post.text}">Text</p>
+                <p>Author:</p>
+                <p th:text="${post.user.username}">Author</p>
+                <p>Category:</p>
+                <p th:text="${post.category}">Category</p>
+                <p>Date:
+                    <time th:text=" ${post.date}">Date</time>
+                </p>
+            </article>
+        </div>
+    </div>
+    <aside>
+        <p class="text-center">
+            <a class="btn btn-primary" tabindex="6" role="button" sec:authorize="isAuthenticated()" th:href="@{'/blog/' + ${post.id} + '/edit' }">Modify post</a>
+            <a class="btn btn-primary" tabindex="7" role="button" sec:authorize="hasRole('ADMIN')" th:href="@{'/blog/' + ${post.id} + '/delete'}">Remove post</a>
+        </p>
+    </aside>
+</main>
+</html>

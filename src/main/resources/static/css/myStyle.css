@@ -1,0 +1,108 @@
+body {
+    font: 24px Helvetica;
+    background: #e8e8e8;
+}
+
+
+main {
+    min-height: 800px;
+    margin: 0px;
+    padding: 0px;
+    display: -webkit-flex;
+    display:         flex;
+    -moz-flex-flow: row;
+    -webkit-flex-flow: row;
+    flex-flow: row;
+}
+#articleList{
+    display:flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    order: 1;
+    width: 70%;
+}
+
+main article {
+    width: 30%;
+    margin: 4px;
+    padding: 5px;
+    border: 1px solid #bbffe9;
+    border-radius: 7pt;
+    order: 1;
+    background: #7fc9ec;
+}
+
+main article#singleContent{
+    width: 100%;
+}
+
+main > nav {
+    margin: 4px;
+    padding: 5px;
+    border: 1px solid #7fc9ec;
+    border-radius: 7pt;
+    background:  #bbffe9;
+    -moz-flex: 1 6 15%;
+    -webkit-flex: 1 6 auto;
+    flex: 1 6 15%;
+    -moz-order: 1;
+    -webkit-order: 1;
+    order: 1;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:active {
+    text-decoration: underline;
+}
+
+header, footer {
+    display: block;
+    margin: 4px;
+    padding: 5px;
+    border: 1px solid #7fc9ec;
+    border-radius: 7pt;
+    background: #bbffe9;
+    font: 14px Helvetica;
+}
+
+/* Too narrow to support three columns */
+@media all and (max-width: 640px) {
+
+    main, #page {
+        -moz-flex-flow: column;
+        -webkit-flex-flow: column;
+        flex-flow: column;
+    }
+
+    main > article, main > nav, main > aside {
+        /* Return them to document order */
+        -moz-order: 0;
+        -webkit-order: 0;
+        order: 0;
+    }
+
+    main > nav, main > aside, footer{
+        min-height: 50px;
+        max-height: 50px;
+        font: 14px Helvetica;
+    }
+
+    article{
+        min-height: 350px;
+        max-height: 350px;
+        font: 14px Helvetica;
+    }
+
+    header{
+        min-height: 150px;
+        max-height: 150px;
+        font: 14px Helvetica;
+    }
+}
